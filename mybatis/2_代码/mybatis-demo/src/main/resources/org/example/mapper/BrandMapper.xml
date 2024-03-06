@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    namespace:名称空间
+ -->
+<mapper namespace="org.example.mapper.BrandMapper">
+    <resultMap id="brandResultMap" type="brand">
+        <!--id: 完成主键字段映射-->
+        <!--result:完成一般字段映射-->
+        <result column="brand_name" property="brandName"/>
+        <result column="company_name" property="companyName"/>
+    </resultMap>
+
+    <!--statement-->
+    <select id="selectAllBrand" resultMap="brandResultMap">
+        select * from tb_brand;
+    </select>
+    <select id="seletOneById" resultMap="brandResultMap">
+        select * from tb_brand where id = #{id};
+    </select>
+    <select id="selectOneByName" resultMap="brandResultMap">
+        select * from tb_brand where company_name = #{companyName};
+    </select>
+</mapper>
